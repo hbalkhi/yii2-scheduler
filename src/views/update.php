@@ -3,10 +3,10 @@
  * Update Task View
  *
  * @var yii\web\View $this
- * @var uzdevid\scheduler\models\SchedulerTask $model
+ * @var hbalkhi\scheduler\models\SchedulerTask $model
  */
 
-use uzdevid\scheduler\models\SchedulerTask;
+use hbalkhi\scheduler\models\SchedulerTask;
 use webtoolsnz\widgets\RadioButtonGroup;
 use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Tabs;

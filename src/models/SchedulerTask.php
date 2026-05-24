@@ -1,6 +1,6 @@
 <?php
 
-namespace uzdevid\scheduler\models;
+namespace hbalkhi\scheduler\models;
 
 use yii\db\ActiveRecord;
 use yii\helpers\Inflector;

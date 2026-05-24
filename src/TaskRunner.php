@@ -1,10 +1,10 @@
 <?php
 
-namespace uzdevid\scheduler;
+namespace hbalkhi\scheduler;
 
-use uzdevid\scheduler\events\TaskEvent;
-use uzdevid\scheduler\models\SchedulerLog;
-use uzdevid\scheduler\models\SchedulerTask;
+use hbalkhi\scheduler\events\TaskEvent;
+use hbalkhi\scheduler\models\SchedulerLog;
+use hbalkhi\scheduler\models\SchedulerTask;
 use Yii;
 use yii\base\Component;
 use yii\base\ErrorException;
@@ -13,7 +13,7 @@ use yii\base\Exception;
 /**
  * Class TaskRunner
  *
- * @package uzdevid\scheduler
+ * @package hbalkhi\scheduler
  * @property Task $task
  */
 class TaskRunner extends Component {
@@ -108,7 +108,7 @@ class TaskRunner extends Component {
     }
 
     /**
-     * If the yii error handler has been overridden with `\uzdevid\scheduler\ErrorHandler`,
+     * If the yii error handler has been overridden with `\hbalkhi\scheduler\ErrorHandler`,
      * pass it this instance of TaskRunner, so it can update the state of tasks in the event of a fatal error.
      */
     public function shutdownHandler() {

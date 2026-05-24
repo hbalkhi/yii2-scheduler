@@ -1,9 +1,9 @@
 <?php
 
-namespace uzdevid\scheduler\actions;
+namespace hbalkhi\scheduler\actions;
 
-use uzdevid\scheduler\models\SchedulerLog;
-use uzdevid\scheduler\models\SchedulerTask;
+use hbalkhi\scheduler\models\SchedulerLog;
+use hbalkhi\scheduler\models\SchedulerTask;
 use Yii;
 use yii\base\Action;
 use yii\web\HttpException;
@@ -11,7 +11,7 @@ use yii\web\HttpException;
 /**
  * Class UpdateAction
  *
- * @package uzdevid\scheduler\actions
+ * @package hbalkhi\scheduler\actions
  */
 class UpdateAction extends Action {
     /**

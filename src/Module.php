@@ -1,10 +1,10 @@
 <?php
 
-namespace uzdevid\scheduler;
+namespace hbalkhi\scheduler;
 
 use ReflectionException;
-use uzdevid\scheduler\models\SchedulerLog;
-use uzdevid\scheduler\models\SchedulerTask;
+use hbalkhi\scheduler\models\SchedulerLog;
+use hbalkhi\scheduler\models\SchedulerTask;
 use Yii;
 use yii\base\BootstrapInterface;
 use yii\base\ErrorException;
@@ -15,7 +15,7 @@ use yii\helpers\ArrayHelper;
 /**
  * Class Module
  *
- * @package uzdevid\scheduler
+ * @package hbalkhi\scheduler
  */
 class Module extends \yii\base\Module implements BootstrapInterface {
     /**
@@ -42,7 +42,7 @@ class Module extends \yii\base\Module implements BootstrapInterface {
 
         if ($app instanceof Application && !isset($app->controllerMap[$this->id])) {
             $app->controllerMap[$this->id] = [
-                'class' => 'uzdevid\scheduler\console\SchedulerController',
+                'class' => 'hbalkhi\scheduler\console\SchedulerController',
             ];
         }
     }

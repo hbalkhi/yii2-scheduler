@@ -1,13 +1,13 @@
 <?php
 
 
-namespace uzdevid\scheduler;
+namespace hbalkhi\scheduler;
 
 use Cron\CronExpression;
 use DateTime;
 use Exception;
-use uzdevid\scheduler\events\TaskEvent;
-use uzdevid\scheduler\models\SchedulerTask;
+use hbalkhi\scheduler\events\TaskEvent;
+use hbalkhi\scheduler\models\SchedulerTask;
 use Yii;
 use yii\base\Component;
 use yii\base\Event;
@@ -17,7 +17,7 @@ use yii\helpers\StringHelper;
 /**
  * Class Task
  *
- * @package uzdevid\scheduler
+ * @package hbalkhi\scheduler
  *
  * @property-read string $name
  * @property null|SchedulerTask $model

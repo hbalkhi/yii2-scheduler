@@ -1,5 +1,5 @@
 <?php
-namespace uzdevid\scheduler\migrations;
+namespace hbalkhi\scheduler\migrations;
 
 use yii\db\Expression;
 use yii\db\Migration;

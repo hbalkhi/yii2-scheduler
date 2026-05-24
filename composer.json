@@ -1,5 +1,5 @@
 {
-  "name": "uzdevid/yii2-scheduler",
+  "name": "hbalkhi/yii2-scheduler",
   "description": "A scheduled task runner for Yii2 applications",
   "keywords": [
     "yii2",
@@ -8,8 +8,8 @@
     "task"
   ],
   "type": "yii2-extension",
-  "license": "proprietary",
-  "homepage": "https://github.com/webtoolsnz/yii2-scheduler",
+  "license": "MIT",
+  "homepage": "https://github.com/hbalkhi/yii2-scheduler",
   "authors": [
     {
       "name": "Byron Adams",
@@ -35,7 +35,7 @@
   "require-dev": {},
   "autoload": {
     "psr-4": {
-      "uzdevid\\scheduler\\": "src"
+      "hbalkhi\\scheduler\\": "src"
     }
   }
 }
