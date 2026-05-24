@@ -1,13 +1,13 @@
 <?php
 
-namespace uzdevid\scheduler;
+namespace hbalkhi\scheduler;
 
 use yii\base\ErrorException;
 
 /**
  * Class ErrorHandler
  *
- * @package uzdevid\scheduler
+ * @package hbalkhi\scheduler
  */
 class ErrorHandler extends \yii\console\ErrorHandler {
     public $memoryReserveSize = 2097152;

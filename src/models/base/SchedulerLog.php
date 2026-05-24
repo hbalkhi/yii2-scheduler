@@ -1,6 +1,6 @@
 <?php
 
-namespace uzdevid\scheduler\models\base;
+namespace hbalkhi\scheduler\models\base;
 
 use Yii;
 use yii\base\InvalidConfigException;
@@ -18,7 +18,7 @@ use yii\db\ActiveRecord;
  * @property string $output
  * @property integer $error
  *
- * @property \uzdevid\scheduler\models\SchedulerTask $schedulerTask
+ * @property \hbalkhi\scheduler\models\SchedulerTask $schedulerTask
  */
 class SchedulerLog extends ActiveRecord {
     /**
@@ -74,7 +74,7 @@ class SchedulerLog extends ActiveRecord {
      * @return ActiveQuery
      */
     public function getSchedulerTask(): ActiveQuery {
-        return $this->hasOne(\uzdevid\scheduler\models\SchedulerTask::class, ['id' => 'scheduler_task_id']);
+        return $this->hasOne(\hbalkhi\scheduler\models\SchedulerTask::class, ['id' => 'scheduler_task_id']);
     }
 
     /**

@@ -1,60 +1,60 @@
 # yii2-scheduler
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Build Status](https://img.shields.io/travis/webtoolsnz/yii2-scheduler/master.svg?style=flat-square)](https://travis-ci.org/webtoolsnz/yii2-scheduler)
-[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/webtoolsnz/yii2-scheduler.svg?style=flat-square)](https://scrutinizer-ci.com/g/webtoolsnz/yii2-scheduler/code-structure)
-[![Quality Score](https://img.shields.io/scrutinizer/g/webtoolsnz/yii2-scheduler.svg?style=flat-square)](https://scrutinizer-ci.com/g/webtoolsnz/yii2-scheduler)
 
-
-A scheduled task manager for yii2
+A scheduled task manager for Yii2 applications. Easily schedule and manage recurring tasks with a user-friendly interface and CLI commands.
 
 ## Installation
 
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
-Install using the following command.
+Install using the following command:
 
-~~~bash
-$ composer require uzdevid/yii2-scheduler
-~~~
+```bash
+composer require hbalkhi/yii2-scheduler
+```
 
-Now that the  package has been installed you need to configure the module in your application
+After installing the package, you need to configure the module in your application.
 
-The `config/console.php` file should be updated to reflect the changes below
-~~~php
-    'bootstrap' => ['log', 'scheduler'],
-    'modules' => [
-        'scheduler' => ['class' => 'uzdevid\scheduler\Module'],
+## Configuration
+
+Update your `config/console.php` file:
+
+```php
+'bootstrap' => ['log', 'scheduler'],
+'modules' => [
+    'scheduler' => ['class' => 'hbalkhi\scheduler\Module'],
+],
+'components' => [
+    'errorHandler' => [
+        'class' => 'hbalkhi\scheduler\ErrorHandler'
     ],
-    'components' => [
-        'errorHandler' => [
-            'class' => 'uzdevid\scheduler\ErrorHandler'
-        ],
-        'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets' => [
-                [
-                    'class' => 'yii\log\EmailTarget',
-                    'mailer' =>'mailer',
-                    'levels' => ['error', 'warning'],
-                    'message' => [
-                        'to' => ['admin@example.com'],
-                        'from' => [$params['adminEmail']],
-                        'subject' => 'Scheduler Error - ####SERVERNAME####'
-                    ],
-                    'except' => [
-                    ],
+    'log' => [
+        'traceLevel' => YII_DEBUG ? 3 : 0,
+        'targets' => [
+            [
+                'class' => 'yii\log\EmailTarget',
+                'mailer' =>'mailer',
+                'levels' => ['error', 'warning'],
+                'message' => [
+                    'to' => ['admin@example.com'],
+                    'from' => [$params['adminEmail']],
+                    'subject' => 'Scheduler Error - ####SERVERNAME####'
+                ],
+                'except' => [
                 ],
             ],
         ],
-    ]
-~~~
+    ],
+]
+```
 
-also add this to the top of your `config/console.php` file
-~~~php
+Also add this to the top of your `config/console.php` file to handle scheduler events:
+
+```php
 \yii\base\Event::on(
-    \uzdevid\scheduler\console\SchedulerController::className(),
-    \uzdevid\scheduler\events\SchedulerEvent::EVENT_AFTER_RUN,
+    \hbalkhi\scheduler\console\SchedulerController::className(),
+    \hbalkhi\scheduler\events\SchedulerEvent::EVENT_AFTER_RUN,
     function ($event) {
         if (!$event->success) {
             foreach($event->exceptions as $exception) {
@@ -63,26 +63,28 @@ also add this to the top of your `config/console.php` file
         }
     }
 );
-~~~
+```
 
-To implement the GUI for scheduler also add the following to your `config/web.php`
-~~~php
-    'bootstrap' => ['log', 'scheduler'],
-    'modules' => [
-        'scheduler' => ['class' => 'uzdevid\scheduler\Module'],
-    ],
-~~~
+To use the scheduler GUI in your web application, add this to your `config/web.php`:
 
-After the configuration files have been updated, a `tasks` directory will need to be created in the root of your project.
+```php
+'bootstrap' => ['log', 'scheduler'],
+'modules' => [
+    'scheduler' => ['class' => 'hbalkhi\scheduler\Module'],
+],
+```
 
+After configuration, create a `tasks` directory in your project root and run the migrations to set up the database tables:
 
-Run the database migrations, which will create the necessary tables for `scheduler`
-~~~bash
-php yii migrate up --migrationPath=vendor/uzdevid/yii2-scheduler/src/migrations
-~~~
+```bash
+php yii migrate up --migrationPath=vendor/hbalkhi/yii2-scheduler/src/migrations
+```
 
-Add a controller
-~~~php
+## GUI Controller
+
+To enable the scheduler GUI in your admin panel, create a controller like this:
+
+```php
 <?php
 
 namespace app\modules\admin\controllers;
@@ -99,28 +101,31 @@ class SchedulerController extends Controller
     {
         return [
             'index' => [
-                'class' => 'uzdevid\scheduler\actions\IndexAction',
+                'class' => 'hbalkhi\scheduler\actions\IndexAction',
                 'view' => '@scheduler/views/index',
             ],
             'update' => [
-                'class' => 'uzdevid\scheduler\actions\UpdateAction',
+                'class' => 'hbalkhi\scheduler\actions\UpdateAction',
                 'view' => '@scheduler/views/update',
             ],
             'view-log' => [
-                'class' => 'uzdevid\scheduler\actions\ViewLogAction',
+                'class' => 'hbalkhi\scheduler\actions\ViewLogAction',
                 'view' => '@scheduler/views/view-log',
             ],
         ];
     }
 }
-~~~
+```
 
-## Example Task
+## Creating Tasks
 
-You can now create your first task using scheduler, create the file `AlphabetTask.php` inside the `tasks` directory in your project root.
+Create task files in your project's `tasks` directory. All task class names must end with `Task`.
 
-Paste the below code into your task:
-~~~php
+### Example Task
+
+Create `AlphabetTask.php` in your `tasks` directory:
+
+```php
 <?php
 namespace app\tasks;
 
@@ -128,10 +133,11 @@ namespace app\tasks;
  * Class AlphabetTask
  * @package app\tasks
  */
-class AlphabetTask extends \uzdevid\scheduler\Task
+class AlphabetTask extends \hbalkhi\scheduler\Task
 {
     public $description = 'Prints the alphabet';
     public $schedule = '0 * * * *';
+    
     public function run()
     {
         foreach (range('A', 'Z') as $letter) {
@@ -139,11 +145,9 @@ class AlphabetTask extends \uzdevid\scheduler\Task
         }
     }
 }
-~~~
+```
 
-The above code defines a simple task that runs at the start of every hour, and prints the alphabet.
-
-The `$schedule` property of this class defines how often the task will run, these are simply [Cron Expression](http://en.wikipedia.org/wiki/Cron#Examples)
+The `$schedule` property uses [Cron Expression](http://en.wikipedia.org/wiki/Cron#Examples) syntax. In the example above, the task runs at the start of every hour.
 
 
 ### Running the tasks
@@ -151,20 +155,20 @@ The `$schedule` property of this class defines how often the task will run, thes
 Scheduler provides an intuitive CLI for executing tasks, below are some examples
 
 ```bash
- # list all tasks and their status
- $ php yii scheduler
+# list all tasks and their status
+$ php yii scheduler
 
- # run the task if due
- $ php yii scheduler/run --taskName=AlphabetTask
+# run the task if due
+$ php yii scheduler/run --taskName=AlphabetTask
 
- # force the task to run regardless of schedule
- $ php yii scheduler/run --taskName=AlphabetTask --force
+# force the task to run regardless of schedule
+$ php yii scheduler/run --taskName=AlphabetTask --force
 
- # run all tasks
- $ php yii scheduler/run-all
+# run all tasks
+$ php yii scheduler/run-all
 
- # force all tasks to run
- $ php yii scheduler/run-all --force
+# force all tasks to run
+$ php yii scheduler/run-all --force
 ```
 
 In order to have your tasks run automatically simply setup a crontab like so
@@ -173,11 +177,11 @@ In order to have your tasks run automatically simply setup a crontab like so
 */5 * * * * admin php /path/to/my/app/yii scheduler/run-all > /dev/null &
 ```
 
-### Events & Errors
+### Events
 
-Events are thrown before and running individual tasks as well as at a global level for multiple tasks
+Events are triggered before and after task execution at both the task and global level.
 
-Task Level
+#### Task Level
 
 ```php
 Event::on(AlphabetTask::className(), AlphabetTask::EVENT_BEFORE_RUN, function ($event) {
@@ -188,10 +192,10 @@ Event::on(AlphabetTask::className(), AlphabetTask::EVENT_AFTER_RUN, function ($e
 });
 ```
 
-or at the global level, to throw errors in `/yii`
+#### Global Level
 
 ```php
-$application->on(\uzdevid\scheduler\events\SchedulerEvent::EVENT_AFTER_RUN, function ($event) {
+$application->on(\hbalkhi\scheduler\events\SchedulerEvent::EVENT_AFTER_RUN, function ($event) {
     if (!$event->success) {
         foreach($event->exceptions as $exception) {
             throw $exception;

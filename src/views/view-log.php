@@ -3,10 +3,10 @@
  * Update Task View
  *
  * @var yii\web\View $this
- * @var uzdevid\scheduler\models\SchedulerLog $model
+ * @var hbalkhi\scheduler\models\SchedulerLog $model
  */
 
-use uzdevid\scheduler\models\SchedulerTask;
+use hbalkhi\scheduler\models\SchedulerTask;
 use yii\helpers\Html;
 
 $this->title = $model->__toString();

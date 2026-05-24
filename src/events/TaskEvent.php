@@ -1,9 +1,9 @@
 <?php
 
-namespace uzdevid\scheduler\events;
+namespace hbalkhi\scheduler\events;
 
 use Exception;
-use uzdevid\scheduler\Task;
+use hbalkhi\scheduler\Task;
 use yii\base\Event;
 
 class TaskEvent extends Event {

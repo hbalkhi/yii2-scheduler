@@ -1,7 +1,7 @@
 <?php
 
 
-namespace uzdevid\scheduler\events;
+namespace hbalkhi\scheduler\events;
 
 use yii\base\Event;
 

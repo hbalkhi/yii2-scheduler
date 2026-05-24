@@ -1,12 +1,12 @@
 <?php
 
-namespace uzdevid\scheduler\console;
+namespace hbalkhi\scheduler\console;
 
-use uzdevid\scheduler\events\SchedulerEvent;
-use uzdevid\scheduler\models\base\SchedulerLog;
-use uzdevid\scheduler\models\SchedulerTask;
-use uzdevid\scheduler\Task;
-use uzdevid\scheduler\TaskRunner;
+use hbalkhi\scheduler\events\SchedulerEvent;
+use hbalkhi\scheduler\models\base\SchedulerLog;
+use hbalkhi\scheduler\models\SchedulerTask;
+use hbalkhi\scheduler\Task;
+use hbalkhi\scheduler\TaskRunner;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\Module;

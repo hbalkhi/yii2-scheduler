@@ -7,7 +7,7 @@
  * @var SchedulerTask $model
  */
 
-use uzdevid\scheduler\models\SchedulerTask;
+use hbalkhi\scheduler\models\SchedulerTask;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
 use yii\helpers\Html;

@@ -1,14 +1,14 @@
 <?php
 
-namespace uzdevid\scheduler\actions;
+namespace hbalkhi\scheduler\actions;
 
-use uzdevid\scheduler\models\SchedulerTask;
+use hbalkhi\scheduler\models\SchedulerTask;
 use yii\base\Action;
 
 /**
  * Class IndexAction
  *
- * @package uzdevid\scheduler\actions
+ * @package hbalkhi\scheduler\actions
  */
 class IndexAction extends Action {
     /**

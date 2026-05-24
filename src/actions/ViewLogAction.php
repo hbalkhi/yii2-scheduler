@@ -1,15 +1,15 @@
 <?php
 
-namespace uzdevid\scheduler\actions;
+namespace hbalkhi\scheduler\actions;
 
-use uzdevid\scheduler\models\SchedulerLog;
+use hbalkhi\scheduler\models\SchedulerLog;
 use yii\base\Action;
 use yii\web\HttpException;
 
 /**
  * Class UpdateAction
  *
- * @package uzdevid\scheduler\actions
+ * @package hbalkhi\scheduler\actions
  */
 class ViewLogAction extends Action {
     /**
