@@ -10,6 +10,10 @@
   "type": "yii2-extension",
   "license": "MIT",
   "homepage": "https://github.com/hbalkhi/yii2-scheduler",
+  "support": {
+    "issues": "https://github.com/hbalkhi/yii2-scheduler/issues",
+    "source": "https://github.com/hbalkhi/yii2-scheduler"
+  },
   "authors": [
     {
       "name": "Byron Adams",
@@ -35,7 +39,7 @@
   "require-dev": {},
   "autoload": {
     "psr-4": {
-      "hbalkhi\\scheduler\\": "src"
+      "hbalkhi\\scheduler\\": "src/"
     }
   }
 }
