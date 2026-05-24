@@ -56,8 +56,13 @@ class SchedulerTask extends base\SchedulerTask {
             $model->status_id = self::STATUS_PENDING;
         }
 
-        $model->description = $task->description;
-        $model->schedule = $task->schedule;
+        if (empty($model->description)) {
+            $model->description = $task->description;
+        }
+
+        if (empty($model->schedule)) {
+            $model->schedule = $task->schedule;
+        }
         $model->save(false);
 
         return $model;
